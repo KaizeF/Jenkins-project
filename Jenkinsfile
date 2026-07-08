@@ -4,6 +4,7 @@ pipeline{
     stage('Checkout Code'){
       steps{
         git 'https://github.com/KaizeF/Jenkins-project'
+        
       }
     }
     stage('Build'){
@@ -21,5 +22,13 @@ pipeline{
         sh 'echo "deploying"'
       }
     }
+  }
+}
+post{
+  success{
+    bat 'echo "build successful"'
+  }
+  failure{
+    bat 'echo "build failed"'
   }
 }
